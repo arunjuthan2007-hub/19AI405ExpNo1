@@ -1,6 +1,6 @@
 <h1>ExpNo 1 :Developing AI Agent with PEAS Description</h1>
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: Arunjuthan.M.A</h3>
+<h3>Register Number : 212225230020 </h3>
 
 
 <h3>AIM:</h3>
@@ -40,3 +40,65 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+
+
+
+<h2>Program:</h2>
+
+```
+
+import random
+
+class MedicinePrescribingAgent:
+    def __init__(self):
+        self.location = 1
+        self.performance = 0
+        self.fever_threshold = 98.5
+
+    def check_patient(self, room, temperature):
+        print(f"\nAgent is checking Room {room}")
+        print(f"Patient temperature: {temperature} F")
+
+        if temperature > self.fever_threshold:
+            print("Patient has a fever.")
+            print("Medicine prescribed to the patient.")
+            self.performance += 1
+        else:
+            print("Patient does not have a fever.")
+            print("No medicine prescribed.")
+
+    def move_to_room(self, room):
+        if self.location != room:
+            print(f"\nAgent moves from Room {self.location} to Room {room}")
+            self.performance -= 1
+            self.location = room
+
+    def run(self, temperatures):
+        rooms = [1, 2]
+        random.shuffle(rooms)
+
+        for room in rooms:
+            self.move_to_room(room)
+            self.check_patient(room, temperatures[room])
+
+        print("\n--- Final Performance ---")
+        print(f"Performance score: {self.performance}")
+
+
+print("Medicine Prescribing Agent using PEAS")
+print("-------------------------------------")
+
+temperatures = {}
+
+temperatures[1] = float(input("Enter temperature of patient in Room 1 (F): "))
+temperatures[2] = float(input("Enter temperature of patient in Room 2 (F): "))
+
+agent = MedicinePrescribingAgent()
+agent.run(temperatures)
+```
+
+<h2>Output:</h2>
+<img width="762" height="337" alt="image" src="https://github.com/user-attachments/assets/6fe55242-fa97-4d0e-912e-4e19efd3f19d" />
+
+<h2>Result:</h2>
+Thus, the AI agent was developed and executed successfully.
